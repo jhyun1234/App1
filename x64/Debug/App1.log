@@ -1,4 +1,2 @@
 ﻿  App1.cpp
-C:\Users\Administrator\Desktop\App1\App1.cpp(14,21): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Administrator\Desktop\App1\App1.cpp(14,23): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   App1.vcxproj -> C:\Users\Administrator\Desktop\App1\x64\Debug\App1.exe

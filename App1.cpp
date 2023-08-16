@@ -1,77 +1,60 @@
-﻿#include <stdio.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
-#include <windows.h>
 
-#define UP 72
-#define LEFT 75
-#define RIGHT 77
-#define DOWN 80
 
-void gotoXY(int x, int y)
+void ReadTextFile(const char * fileName)
 {
-	// x, y 좌표 설정 
-	COORD position = { x,y };
+	FILE* readfile = fopen(fileName, "r");
 
-	// 커서 이동
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
+	char buffer[10000] = { 0, };
 
+	// fread()
+	// 첫 번째 매개변수 : 크기를 가지는 배열을 가리키는 포인터 이다.
+	// 두 번째 매개변수 : 읽어들일 원소의 크기로 단위는 바이트 이다.
+	// 세 번째 매개변수 : 읽어들일 원소들의 개수로 각 원소의 크기 이다.
+	// 네 번째 매개변수 : 데이터를 입력받을 스트림의 FILE 객체를 가리키는 포인터 이다.
+
+	fread(buffer, 1, 10000, readfile);
+	printf("%s", buffer);
+
+	fclose(readfile);
 }
 
 int main()
 {
-#pragma region _Kbhit()함수
+#pragma region 파일 입출력
+	// 보조 기억장치(디스크)로 부터 데이터를 
+	// 읽어오거나 저장하는 과정이다.
 
-	// char key = 0;
-	// int x = 5;
-	// int y = 5;
+	// fopen("파일 이름","파일 모드")
+	// "w" : 파일쓰기
+	// FILE * filePtr=fopen("data.txt","w");
 	// 
-	// //  Update()
-	// while(1)
-	// {
-	// 	gotoXY(x, y);
-	// 	printf("★");
+	// char content[10] = "Content";
 	// 
-	// 	if (_kbhit()) // 키보드 입력을 확인하는 함수
-	// 	{
-	// 
-	// 		key = _getch();
-	// 		if (key == -32)
-	// 		{
-	// 			key = _getch();
-	// 		}
+	// fputs(content, filePtr);
 	// 
 	// 
-	// 		switch (key)
-	// 		{
-	// 		case UP: 
-	// 			if (y <= 0) break;
-	// 			y--;
-	// 			break;
-	// 		case LEFT: 
-	// 			if (x <= 0) break;
-	// 			x--;
-	// 			break;
-	// 		case RIGHT: x++;
-	// 			break;
-	// 		case DOWN: y++;
-	// 			break;
-	// 		
-	// 		}
-	// 		// 스크린을 지우는 함수
-	// 		system("cls");
-	// 	}
-	// 	
-	// 	// Sleep : 1/1000의 1초로 계산된다.
+	// FILE* fileReader = fopen("data.txt", "r");
+	// fgets(content,sizeof(content), fileReader);
+	// printf("%s", content);
 	// 
-	// }
-#pragma endregion
-
-#pragma region MyRegion
+	// //fprintf(filePtr, "%s\n", "Data");
+	// 
+	// fclose(fileReader); // 파일 닫아주기
 
 #pragma endregion
-	// LNK1036 링킹 
 
+	// ReadTextFile("Resources/bbb.TXT");
+
+	while (1)
+	{
+		ReadTextFile("Resources/data.TXT");
+
+		system("cls");
+	}
+	
 	return 0;
 }
 
